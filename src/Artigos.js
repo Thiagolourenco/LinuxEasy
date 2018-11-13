@@ -8,7 +8,11 @@ import {
 
 export default class Artigos extends Component{
     static navigationOptions = {
-        drawerLabel: 'Artigos'
+        drawerLabel: 'Artigos',
+        drawerIcon:(
+            <Image source={require('../imagemLinux/artigos.png')} style={{width: 30, height: 30}}/>
+        )
+        
     }
     render(){
         return(

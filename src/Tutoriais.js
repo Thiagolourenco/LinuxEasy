@@ -3,17 +3,21 @@ import {
     Text,
     View,
     FlatList,
-    StyleSheet
+    StyleSheet,
+    Image
 } from 'react-native'
 
 export default class Tutoriais extends Component {
     static navigationOptions = {
-        drawerLabel: 'Tutoriais'
+        drawerLabel: 'Tutoriais',
+        drawerIcon: (
+            <Image source={require('../imagemLinux/tutoriais.png')} style={{width: 30, height: 30}}/>
+        )
     }
     render(){
         return(
             <View>  
-                              <Text>Ola</Text>
+                <Text>Tutoriais</Text>
             </View>
         );
     }
