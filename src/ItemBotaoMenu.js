@@ -1,22 +1,9 @@
 import React, { Component } from 'react';
-import {
-    View,
-    Text,
-    StyleSheet,
-    Image,
-    TouchableOpacity,
-    FlatList
-} from 'react-native';
-import ListaNome from './ListaNome';
+import { Text, View, StyleSheet, TouchableOpacity,Image,FlatList} from 'react-native';
+import { ListItem } from 'native-base';
+import ListaNome from './ListaNome'
 
-export default class Artigos extends Component{
-    static navigationOptions = {
-        drawerLabel: 'Artigos',
-        drawerIcon:(
-            <Image source={require('../imagemLinux/artigos.png')} style={{width: 30, height: 30}}/>
-        )
-        
-    }
+export default class ItemBotaoMenu extends Component {
     constructor(props){
         super(props);
         this.state = {
@@ -28,6 +15,8 @@ export default class Artigos extends Component{
                 {key: 5},
 
             ]
+
+            
         };
     }
     render(){
