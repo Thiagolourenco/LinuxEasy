@@ -15,8 +15,6 @@ export default class ItemBotaoMenu extends Component {
                 {key: 5},
 
             ]
-
-            
         };
     }
     render(){

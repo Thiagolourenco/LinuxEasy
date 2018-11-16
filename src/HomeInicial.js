@@ -5,9 +5,10 @@ import {
     FlatList,
     Image,
     Text,
-    TouchableOpacity
+    TouchableOpacity,
+    TouchableHighlight
 } from 'react-native'
-import ListaNome from './ListaNome'
+import ListaNome from './ListaNome';
 
 export default class HomeInicial extends Component{
     static navigationOptions = {
@@ -21,11 +22,30 @@ export default class HomeInicial extends Component{
         super(props);
         this.state = {
             list: [
-                {key: '1', name: 'Thiago', img:require('../imagemLinux/281018125456_128.png')},
-                {key: '2', name: 'if_home_126572if_home_126572if_home_126572Thiago', img:require('../imagemLinux/281018125456_128.png')},
-                {key: '3', name: 'Thiago', img:require('../imagemLinux/281018125456_128.png')},
-                {key: '4', name: 'Thiago', img:require('../imagemLinux/281018125456_128.png')},
-                {key: '5', name: 'Thiago', img:require('../imagemLinux/281018125456_128.png')},
+                {
+                    key: '1',
+                    name: 'IBM compra Red Hat por US$ 34 bilhões',
+                    img:require('../imagemLinux/ibmRedHat.jpg'),
+                    bg: '#e55039'
+            },
+                {
+                    key: '2',
+                    name: 'Ex-astronauta fica rico com seu sistema operacional Ubuntu',
+                    img:require('../imagemLinux/ubuntu.jpg'),
+                    bg: '#6a89cc'
+                },
+                {
+                    key: '3',
+                    bg: '#6a89cc'
+                },
+                {
+                    key: '4',
+                    bg: '#6a89cc'
+                },
+                {
+                    key: '5',
+                    bg: '#6a89cc'
+                },
             ]
         };
     }
@@ -44,11 +64,34 @@ export default class HomeInicial extends Component{
 
                 <FlatList 
                     data={this.state.list}
-                    renderItem={(item) => <ListaNome data={item}/>}
+                    renderItem={({item}) => <ListaNoticias data={item}/>}
                 />
             </View>
         );
     }   
+}
+
+class ListaNoticias extends Component{
+    constructor(props){
+        super(props);
+        this.state = {};
+
+        this.noticias = this.noticias.bind(this);
+    }
+    noticias(){
+        alert('s')
+    }
+    render(){
+        return(
+        <TouchableHighlight style={[styles.containerEmpresa, {backgroundColor: this.props.data.bg}]} underlayColor="#ecf0f1" onPress={this.noticias}>
+            <View style={styles.corpo}>
+                <Image source={this.props.data.img} style={styles.imgTouch}/>
+                    <Text style={styles.nome}>{this.props.data.name}</Text>
+            </View>
+        </TouchableHighlight>
+
+        );
+    }
 }
 
 const styles = StyleSheet.create({
@@ -58,7 +101,6 @@ const styles = StyleSheet.create({
         paddingTop: 20
     },
     header: {
-        flex: 1,
         flexDirection :'row'
     },
     titulo: {
@@ -76,5 +118,31 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flexDirection: 'row',
         marginLeft: 50
+    },
+    containerEmpresa: {
+        flex: 2,
+        flexDirection: 'column',
+        backgroundColor: '#FFF',
+        height: 275,
+        width: 390,
+        margin: 8,
+        borderRadius: 10
+    },
+
+    corpo: {
+        flexDirection: 'column',
+        margin: 5
+    },
+
+    imgTouch: {
+        width: 355,
+        height: 180,
+        margin: 10,
+        alignSelf: 'flex-start',
+    },
+    nome: {
+        fontSize: 25,
+        fontWeight: 'bold',
+        alignItems: 'center',
     }
 })

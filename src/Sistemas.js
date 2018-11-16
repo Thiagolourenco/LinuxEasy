@@ -58,7 +58,6 @@ const styles = StyleSheet.create({
         paddingTop: 20
     },
     header: {
-        flex: 1,
         flexDirection :'row'
     },
     titulo: {

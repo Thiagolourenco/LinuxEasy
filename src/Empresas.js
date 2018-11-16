@@ -5,9 +5,11 @@ import {
     FlatList,
     StyleSheet,
     Image,
-    TouchableOpacity
+    TouchableOpacity,
+    TouchableHighlight
 } from 'react-native';
 import ListaNome from './ListaNome';
+import EmpresaF from './Empresa/EmpresaF';
 
 export default class Empresas extends Component {
     static navigationOptions = {
@@ -20,11 +22,18 @@ export default class Empresas extends Component {
         super(props);
         this.state = {
             list: [
-                {key: 1},
-                {key: 2},
-                {key: 3},
-                {key: 4},
-                {key: 5},
+                {
+                    key: 1, 
+                    nome: 'F13 Tecnologia',
+                    img:require('../imagemLinux/F13.jpg'),
+                    desc: 'Uma empresa que apresenta de forma \n dinâmica e criativa, de trabalhar com \nGNU/Linux. ',
+                    bg: '#1abc9c'
+                    
+                },
+                {key: 2, bg: '#1abc9c'},
+                {key: 3, bg: '#1abc9c'},
+                {key: 4, bg: '#1abc9c'},
+                {key: 5, bg: '#1abc9c'},
 
             ]
         };
@@ -44,9 +53,31 @@ export default class Empresas extends Component {
 
                 <FlatList 
                     data={this.state.list}
-                    renderItem={(item) => <ListaNome data={item}/>}
+                    renderItem={({item}) => <ListaEmpresa data={item}/>}
                 />
             </View>
+        );
+    }
+}
+
+class ListaEmpresa extends Component {
+    constructor(props){
+        super(props);
+        this.state = {};
+
+    }
+
+    render(){
+        return(
+        <TouchableHighlight style={[styles.containerEmpresa, {backgroundColor: this.props.data.bg}]} onPress={()=> this.props.navigation.navigate('EmpresaF')} underlayColor="#ecf0f1">
+            <View style={styles.corpo}>
+                <Image source={this.props.data.img} style={styles.imgTouch}/>
+                <View style={styles.coNome}>
+                    <Text style={styles.nome}>{this.props.data.nome}</Text>
+                    <Text numberOfLines={3}>{this.props.data.desc}</Text>
+                </View>
+            </View>
+       </TouchableHighlight>
         );
     }
 }
@@ -58,7 +89,7 @@ const styles = StyleSheet.create({
         paddingTop: 20
     },
     header: {
-        flex: 1,
+        
         flexDirection :'row'
     },
     titulo: {
@@ -76,5 +107,41 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flexDirection: 'row',
         marginLeft: 50
+    },
+    containerEmpresa: {
+        flex: 2,
+        flexDirection: 'row',
+        backgroundColor: '#FFF',
+        height: 100,
+        width: 390,
+        margin: 8,
+        borderRadius: 10
+    },
+    imagems: {
+        width: 70,
+        height: 70,
+        margin: 10,
+        alignSelf: 'flex-start'
+
+    },
+    corpo: {
+        flexDirection: 'row',
+        margin: 5
+    },
+    coNome: {
+        flexDirection: 'column',
+        marginLeft: 5
+    },
+    imgTouch: {
+        width: 70,
+        height: 70,
+        margin: 10,
+        alignSelf: 'flex-start',
+        borderRadius: 10
+    },
+    nome: {
+        fontSize: 25,
+        fontWeight: 'bold',
+        alignItems: 'center'
     }
 })
