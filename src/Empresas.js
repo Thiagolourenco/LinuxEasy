@@ -8,8 +8,7 @@ import {
     TouchableOpacity,
     TouchableHighlight
 } from 'react-native';
-import ListaNome from './ListaNome';
-import EmpresaF from './Empresa/EmpresaF';
+import { StackNavigator } from 'react-navigation';
 
 export default class Empresas extends Component {
     static navigationOptions = {
@@ -20,6 +19,7 @@ export default class Empresas extends Component {
     }
     constructor(props){
         super(props);
+        console.log(props);
         this.state = {
             list: [
                 {
@@ -27,7 +27,8 @@ export default class Empresas extends Component {
                     nome: 'F13 Tecnologia',
                     img:require('../imagemLinux/F13.jpg'),
                     desc: 'Uma empresa que apresenta de forma \n dinâmica e criativa, de trabalhar com \nGNU/Linux. ',
-                    bg: '#1abc9c'
+                    bg: '#1abc9c',
+                    
                     
                 },
                 {key: 2, bg: '#1abc9c'},
@@ -64,12 +65,16 @@ class ListaEmpresa extends Component {
     constructor(props){
         super(props);
         this.state = {};
-
     }
 
+    static navigationOptions = {
+        title: 'Sobre'
+    };
+
     render(){
+        
         return(
-        <TouchableHighlight style={[styles.containerEmpresa, {backgroundColor: this.props.data.bg}]} onPress={()=> this.props.navigation.navigate('EmpresaF')} underlayColor="#ecf0f1">
+        <TouchableHighlight style={[styles.containerEmpresa, {backgroundColor: this.props.data.bg}]} onPress={() => this.props.navigation.navigate('TelaInicial')} underlayColor="#ecf0f1">
             <View style={styles.corpo}>
                 <Image source={this.props.data.img} style={styles.imgTouch}/>
                 <View style={styles.coNome}>
@@ -82,6 +87,28 @@ class ListaEmpresa extends Component {
     }
 }
 
+
+class SobreEmpresa extends Component{
+    
+    render(){
+        return(
+            <View>
+                <Text>Ols</Text>
+            </View>
+        );
+    }
+}
+
+const Empresa = StackNavigator({
+    Empresas: {
+        screen: Empresas
+    },
+    SobreEmpresa: {
+        screen: SobreEmpresa
+    }
+},{
+    headerMode: "none"
+})
 const styles = StyleSheet.create({
     container: {
         flex: 1,

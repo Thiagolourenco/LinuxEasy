@@ -89,6 +89,6 @@ const styles = StyleSheet.create({
     },
     texto: {
         fontSize: 15,
-        color: '#6c5ce7'
+        color: 'white'
     }
 })

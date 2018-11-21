@@ -111,7 +111,7 @@ android {
     }
     signingConfigs {
         release {
-            if(project.hasProperty(APP_RELEASE_STORE_FILE)){
+            if(project.hasProperty('APP_RELEASE_STORE_FILE')){
                 storeFile file(APP_RELEASE_STORE_FILE)
                 storePassword APP_RELEASE_STORE_PASSWORD
                 keyAlias APP_RELEASE_KEY_ALIAS

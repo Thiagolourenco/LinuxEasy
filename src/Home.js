@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, StyleSheet} from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import {DrawerNavigator, DrawerItems} from 'react-navigation';
 import HomeInicial from './HomeInicial';
 import Artigos from './Artigos';
@@ -7,7 +7,7 @@ import Tutoriais from './Tutoriais';
 import Sistemas from './Sistemas';
 import Empresas from './Empresas';
 
-import { Container, Content, Body, Header, Icon } from 'native-base'
+import { Container, Content, Body, Header, Icon, Button } from 'native-base'
 
 const UserLogo = (props) => (
     <Container style={{backgroundColor: '#bdc3c7'}}>
@@ -28,7 +28,7 @@ class Logout extends Component {
         drawerLabel: 'Logout',
         drawerIcon: (
             <Image source={require('../imagemLinux/logout.png')} style={{width: 30, height: 30}}/>
-        )
+        ),
     }
     render(){
         return(

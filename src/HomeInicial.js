@@ -6,7 +6,8 @@ import {
     Image,
     Text,
     TouchableOpacity,
-    TouchableHighlight
+    TouchableHighlight,
+    Linking
 } from 'react-native'
 import ListaNome from './ListaNome';
 
@@ -26,13 +27,15 @@ export default class HomeInicial extends Component{
                     key: '1',
                     name: 'IBM compra Red Hat por US$ 34 bilhões',
                     img:require('../imagemLinux/ibmRedHat.jpg'),
-                    bg: '#e55039'
+                    bg: '#e55039',
+                    url: 'https://canaltech.com.br/negocios/ibm-compra-red-hat-em-maior-aquisicao-da-historia-da-industria-de-software-125781/'
             },
                 {
                     key: '2',
                     name: 'Ex-astronauta fica rico com seu sistema operacional Ubuntu',
                     img:require('../imagemLinux/ubuntu.jpg'),
-                    bg: '#6a89cc'
+                    bg: '#6a89cc',
+                    url: 'https://exame.abril.com.br/tecnologia/ex-astronauta-fica-rico-com-seu-sistema-operacional-ubuntu/'
                 },
                 {
                     key: '3',
@@ -75,15 +78,10 @@ class ListaNoticias extends Component{
     constructor(props){
         super(props);
         this.state = {};
-
-        this.noticias = this.noticias.bind(this);
-    }
-    noticias(){
-        alert('s')
     }
     render(){
         return(
-        <TouchableHighlight style={[styles.containerEmpresa, {backgroundColor: this.props.data.bg}]} underlayColor="#ecf0f1" onPress={this.noticias}>
+        <TouchableHighlight style={[styles.containerEmpresa, {backgroundColor: this.props.data.bg}]} underlayColor="#ecf0f1" onPress={()=> Linking.openURL(this.props.data.url)}>
             <View style={styles.corpo}>
                 <Image source={this.props.data.img} style={styles.imgTouch}/>
                     <Text style={styles.nome}>{this.props.data.name}</Text>
