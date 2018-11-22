@@ -5,9 +5,9 @@ import HomeInicial from './HomeInicial';
 import Artigos from './Artigos';
 import Tutoriais from './Tutoriais';
 import Sistemas from './Sistemas';
-import Empresas from './Empresas';
+import Empresa from './Empresa';
 
-import { Container, Content, Body, Header, Icon, Button } from 'native-base'
+import { Container, Content, Body, Header, Icon, Button } from 'native-base';
 
 const UserLogo = (props) => (
     <Container style={{backgroundColor: '#bdc3c7'}}>
@@ -52,8 +52,8 @@ const Navegador = DrawerNavigator({
     Sistemas: {
         screen: Sistemas
     },
-    Empresas: {
-        screen: Empresas
+    Empresa: {
+        screen: Empresa
     },
     Logout: {
         screen: Logout
@@ -71,8 +71,6 @@ const Navegador = DrawerNavigator({
     },
     
 })
-
-export default Navegador;
 
 const styles = StyleSheet.create({
     headerImagem: {
@@ -96,3 +94,5 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     }
 })
+
+export default Navegador;

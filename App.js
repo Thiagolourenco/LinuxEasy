@@ -3,7 +3,8 @@ import {StackNavigator} from 'react-navigation';
 import TelaInicial from './src/TelaInicial';
 import EsqueceuSenha from './src/EsqueceuSenha';
 import Cadastra from './src/Cadastra';
-import Home from './src/Home'
+import Home from './src/Home';
+import Sobre from './src/Sobre';
 
 const Navegador = StackNavigator({
   TelaInicial:{
@@ -17,9 +18,12 @@ const Navegador = StackNavigator({
   },
   Home: {
     screen: Home
+  },
+  Sobre: {
+    screen: Sobre
   }
 },{
   headerMode: "none"
-})
+});
 
 export default Navegador;
