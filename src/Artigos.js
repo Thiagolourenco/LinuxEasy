@@ -7,7 +7,7 @@ import {
     TouchableOpacity,
     FlatList
 } from 'react-native';
-import ListaNome from './ListaNome';
+import ListaArtigos from './ListaArtigos';
 
 export default class Artigos extends Component{
     static navigationOptions = {
@@ -21,11 +21,36 @@ export default class Artigos extends Component{
         super(props);
         this.state = {
             list: [
-                {key: 1},
-                {key: 2},
-                {key: 3},
-                {key: 4},
-                {key: 5},
+                {
+                    key: 1,
+                    titulo: 'Configurando o Apache para deixar dois servidores web no mesmo link',
+                    url: 'https://www.vivaolinux.com.br/artigo/Configurando-o-Apache-para-deixar-dois-servidores-web-no-mesmo-link/?pagina=2',
+                    bg: '#b8e994'
+                },
+                {
+                    key: 2,
+                    titulo: 'Qual o melhor sistema operacional, Windows, Linux ou Mac OS?',
+                    url: 'https://www.oficinadanet.com.br/post/12792-descubra-qual-o-melhor-sistema-operacional',
+                    bg: '#b8e994'
+                },
+                {
+                    key: 3,
+                    titulo: 'Kernel dos Sistemas Operacionais',
+                    url: 'https://www.oficinadanet.com.br/post/10330-kernel-dos-sistemas-operacionais',
+                    bg: '#b8e994'
+                },
+                {
+                    key: 4,
+                    titulo: 'Configurando a rede na linha de comando no ubuntu e no debian',
+                    url: 'https://www.oficinadanet.com.br/artigo/linux/configurando_a_rede_na_linha_de_comando_no_ubuntu_e_no_debian',
+                    bg: '#b8e994'
+                },
+                {
+                    key: 5,
+                    titulo: 'Configurando a rede na linha de comando no ubuntu e no debian',
+                    url: 'https://www.edivaldobrito.com.br/vineyard-a-maneira-facil-de-configurar-wine-no-ubuntu/',
+                    bg: '#b8e994'
+                },
 
             ]
         };
@@ -45,7 +70,7 @@ export default class Artigos extends Component{
 
                 <FlatList 
                     data={this.state.list}
-                    renderItem={(item) => <ListaNome data={item}/>}
+                    renderItem={({item}) => <ListaArtigos data={item}/>}
                 />
             </View>
         );

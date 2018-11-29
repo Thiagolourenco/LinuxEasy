@@ -6,6 +6,7 @@ import Artigos from './Artigos';
 import Tutoriais from './Tutoriais';
 import Sistemas from './Sistemas';
 import Empresa from './Empresa';
+import Logout from './Logout';
 
 import { Container, Content, Body, Header, Icon, Button } from 'native-base';
 
@@ -23,21 +24,6 @@ const UserLogo = (props) => (
     </Container>
 )
 
-class Logout extends Component {
-    static navigationOptions = {
-        drawerLabel: 'Logout',
-        drawerIcon: (
-            <Image source={require('../imagemLinux/logout.png')} style={{width: 30, height: 30}}/>
-        ),
-    }
-    render(){
-        return(
-            <View style={styles.container}>
-                 <Text style={styles.concluindo}>Concluindo...</Text>
-            </View>
-        );
-    }
-}
 
 const Navegador = DrawerNavigator({
     Home:{

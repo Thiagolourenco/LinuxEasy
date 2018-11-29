@@ -6,9 +6,45 @@ import {
     TextInput,
     Image,
     TouchableOpacity
-} from 'react-native'
+} from 'react-native';
+import firebase from './FirebaseConexao';
 
 export default class TelaInicial extends Component{
+
+    constructor(props){
+        super(props);
+        this.state = {
+            email: '',
+            senha: ''
+        };
+
+        this.logar = this.logar.bind(this);
+
+        firebase.auth().signOut()
+
+        
+    }
+
+    logar(){
+        firebase.auth().onAuthStateChanged((user) => {
+            if(user){
+                this.props.navigation.navigate('Home');
+            }
+        });
+
+        firebase.auth().signInWithEmailAndPassword(
+            this.state.email,
+            this.state.senha
+        ).catch((error) => {
+            if(error.code == 'auth/wrong-password'){
+                alert('Senha errada, verificar senha!')
+            }else if(error.code == 'auth/user-not-found'){
+                alert('Usuário incorreto');
+            }else{
+                alert(erro.code)
+            }
+        });
+    }
     render(){
         return(
             <View style={styles.container}>
@@ -17,9 +53,9 @@ export default class TelaInicial extends Component{
                     <Text style={styles.titulo}>LinuxEasy</Text>
                 </View>
                 <View style={styles.btn}>
-                    <TextInput placeholder="LOGIN" style={styles.input} />
-                    <TextInput placeholder="********" style={styles.input} secureTextEntry/>
-                    <TouchableOpacity style={styles.btnLogar} onPress={() => this.props.navigation.navigate('Home')}>
+                    <TextInput placeholder="EMAIL CADASTRADO" style={styles.input} onChangeText={(email) => this.setState({email})}/>
+                    <TextInput placeholder="********" style={styles.input} secureTextEntry onChangeText={(senha) => this.setState({senha})}/>
+                    <TouchableOpacity style={styles.btnLogar} onPress={this.logar}>
                         <Text style={styles.btnTexto}>LOGAR</Text>
                     </TouchableOpacity>
                 </View>

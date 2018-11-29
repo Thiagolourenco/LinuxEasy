@@ -29,7 +29,7 @@ export default class HomeInicial extends Component{
                     img:require('../imagemLinux/ibmRedHat.jpg'),
                     bg: '#e55039',
                     url: 'https://canaltech.com.br/negocios/ibm-compra-red-hat-em-maior-aquisicao-da-historia-da-industria-de-software-125781/'
-            },
+                 },
                 {
                     key: '2',
                     name: 'Ex-astronauta fica rico com seu sistema operacional Ubuntu',
@@ -39,15 +39,24 @@ export default class HomeInicial extends Component{
                 },
                 {
                     key: '3',
-                    bg: '#6a89cc'
+                    name: 'Arch-Audit: Uma ferramenta para verificar vulnerabilidades',
+                    img: require('../imagemLinux/archLinuxVul.jpg'),
+                    bg: '#6a89cc',
+                    url: 'https://sempreupdate.com.br/arch-audit-uma-ferramenta-para-verificar-vulnerabilidades-em-pacotes-no-arch-linux/'
                 },
                 {
                     key: '4',
-                    bg: '#6a89cc'
+                    name: 'Dell foi atacada e redefiniu as senhas dos seus clientes',
+                    img: require('../imagemLinux/dell.jpg'),
+                    bg: '#6a89cc',
+                    url: 'https://www.edivaldobrito.com.br/dell-foi-atacada/'
                 },
                 {
                     key: '5',
-                    bg: '#6a89cc'
+                    name: 'Parâmetros de inicialização úteis para o Proton da Steam',
+                    img: require('../imagemLinux/steam.jpg'),
+                    bg: '#6a89cc',
+                    url: 'https://www.diolinux.com.br/2018/11/parametros-de-inicializacao-uteis-para.html'
                 },
             ]
         };

@@ -7,9 +7,51 @@ import {
     StyleSheet,
     Image,
     
-} from 'react-native'
+} from 'react-native';
+import firebase from './FirebaseConexao';
 
 export default class Cadastra extends Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            nome: '',
+            email: '',
+            idade: '',
+            senha: '',
+            senhas: ''
+        };
+
+        this.cadastrar = this.cadastrar.bind(this);
+
+        firebase.auth().signOut();
+    }
+
+    cadastrar(){
+        if(this.state.nome != '' && 
+        this.state.email != '' &&
+        this.state.idade != '' &&
+        this.state.senha != '' &&
+        this.state.senhas != ''
+        ){
+            firebase.auth().onAuthStateChanged((user) => {
+                if(user){
+                    firebase.database().ref('usuarios').child(user.uid).set({
+                        nome: this.state.nome,
+                        idade: this.state.idade,
+                        senhas: this.state.senhas
+                    });
+
+                    alert('Usuário Cadastrado Com Sucesso')
+                }
+            })
+            firebase.auth().createUserWithEmailAndPassword(
+                this.state.email,
+                this.state.senha
+            ).catch((error) => {
+                alert(error.code)
+            })
+        }
+    }
     render(){
         return(
             <View style={styles.container}>
@@ -19,18 +61,18 @@ export default class Cadastra extends Component{
                 </View>
                 <View style={styles.cadastro}>
                     <Text style={styles.textoCadastro}>CADASTRO</Text>
-                    <TextInput style={styles.input} placeholder="Nome"/>
-                    <TextInput style={styles.input} placeholder="E-mail"/>
-                    <TextInput style={styles.input}/>
-                    <TextInput style={styles.input} secureTextEntry placeholder="********"/>
-                    <TextInput style={styles.input} secureTextEntry placeholder="********"/>
+                    <TextInput style={styles.input} placeholder="Nome" onChangeText={(nome) => this.setState({nome})}/>
+                    <TextInput style={styles.input} placeholder="E-mail" onChangeText={(email) => this.setState({email})}/>
+                    <TextInput style={styles.input} placeholder="idade" onChangeText={(idade) => this.setState({idade})}/>
+                    <TextInput style={styles.input} secureTextEntry placeholder="********" onChangeText={(senha) => this.setState({senha})}/>
+                    <TextInput style={styles.input} secureTextEntry placeholder="********" onChangeText={(senhas) => this.setState({senhas})}/>
                 </View>
                 <View >
-                    <TouchableOpacity style={styles.botaoCadastro}>
+                    <TouchableOpacity style={styles.botaoCadastro} onPress={this.cadastrar}>
                         <Text style={styles.botaoTexto}>CADASTRAR</Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
-                        <Text>VOLTAR</Text>
+                        <Image source={require('../imagemLinux/voltar.png')} style={{width: 26, height: 26}} />
                     </TouchableOpacity>
                 </View>
             </View>
