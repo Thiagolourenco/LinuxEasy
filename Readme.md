@@ -1,6 +1,6 @@
 # LinuxEasy - Desenvolvido em React Native
 
-#Requisitos Para Executar o APP
+# Requisitos Para Executar o APP
 -> Ter o Android Studio instalado
 -> React Native instalado
 
